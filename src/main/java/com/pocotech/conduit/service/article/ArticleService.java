@@ -16,7 +16,12 @@ public class ArticleService {
     public List<ArticlePreviewEntity> list() {
         return articleRepository.select()
                 .stream()
-                .map(r -> new ArticlePreviewEntity(r.title(), r.authorId().toString(), r.description(), r.createdAt().toLocalDate()))
+                .map(r -> new ArticlePreviewEntity(
+                        r.getTitle(),
+                        r.getAuthorId().toString(),
+                        r.getDescription(),
+                        r.getCreatedAt().toLocalDate()
+                ))
                 .collect(Collectors.toList());
     }
 }
