@@ -1,18 +1,16 @@
 package com.pocotech.conduit.controller;
 
 import com.pocotech.conduit.service.article.ArticleService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
+@RequiredArgsConstructor
 public class IndexController {
 
     private final ArticleService articleService;
-
-    public IndexController(ArticleService articleService) {
-        this.articleService = articleService;
-    }
 
     @GetMapping
     public String index(Model model) {
