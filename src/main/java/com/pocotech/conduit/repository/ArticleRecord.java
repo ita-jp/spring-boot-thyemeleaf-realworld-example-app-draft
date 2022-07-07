@@ -8,7 +8,7 @@ import java.util.UUID;
 @Data
 public class ArticleRecord {
     UUID id;
-    UUID authorId;
+    UserRecord user;
     String title;
     String description;
     String body;

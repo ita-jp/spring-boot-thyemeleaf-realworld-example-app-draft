@@ -18,7 +18,7 @@ public class ArticleService {
                 .stream()
                 .map(r -> new ArticlePreviewEntity(
                         r.getTitle(),
-                        r.getAuthorId().toString(),
+                        r.getUser().getUsername(),
                         r.getDescription(),
                         r.getCreatedAt().toLocalDate()
                 ))
