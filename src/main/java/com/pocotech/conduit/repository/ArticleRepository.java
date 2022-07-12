@@ -38,7 +38,7 @@ public interface ArticleRepository {
     })
     List<ArticleRecord> select();
 
-    @Select("SELECT '1'")
+    @Select("SELECT 1")
     @Results(id = "userResultMap", value = {
             @Result(id = true, column = "id", property = "id"),
             @Result(column = "username", property = "username"),
