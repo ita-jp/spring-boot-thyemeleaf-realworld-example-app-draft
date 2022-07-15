@@ -24,6 +24,7 @@ public interface ArticleRepository {
               , a.updated_at
               , u.id as user_id
               , u.username as user_username
+              , u.image_url as user_image_url
               , u.created_at as user_created_at
               , u.updated_at as user_updated_at
             FROM articles a
@@ -45,11 +46,13 @@ public interface ArticleRepository {
     @Results(id = "userResultMap", value = {
             @Result(id = true, column = "id", property = "id"),
             @Result(column = "username", property = "username"),
+            @Result(column = "image_url", property = "imageURL"),
             @Result(column = "created_at", property = "createdAt"),
             @Result(column = "updated_at", property = "updatedAt")
     })
     UserRecord __userResultMap();
 
+    // TODO ResultMapping 共通化
     @Select("""
             SELECT
                 a.id
@@ -62,6 +65,7 @@ public interface ArticleRepository {
               , a.updated_at
               , u.id as user_id
               , u.username as user_username
+              , u.image_url as user_image_url
               , u.created_at as user_created_at
               , u.updated_at as user_updated_at
             FROM articles a

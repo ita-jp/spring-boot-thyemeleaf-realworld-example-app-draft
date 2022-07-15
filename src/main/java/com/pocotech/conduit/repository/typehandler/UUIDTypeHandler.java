@@ -1,4 +1,4 @@
-package com.pocotech.conduit.repository;
+package com.pocotech.conduit.repository.typehandler;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;

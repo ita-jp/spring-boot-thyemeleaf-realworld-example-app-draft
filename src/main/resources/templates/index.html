@@ -66,7 +66,7 @@
 
                 <div class="article-preview" th:each="article: ${articlePreviewList}">
                     <div class="article-meta">
-                        <a href="profile.html"><img src="http://i.imgur.com/Qr71crq.jpg"/></a>
+                        <a href="profile.html"><img src="http://i.imgur.com/Qr71crq.jpg" th:src="${article.imageURL}"/></a>
                         <div class="info">
                             <a href="" class="author" th:text="${article.author}">__author__</a>
                             <span class="date" th:text="${article.createdAt}">__date__</span>

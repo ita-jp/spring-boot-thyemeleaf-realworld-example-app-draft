@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS users (
   id UUID PRIMARY KEY,
   username text NOT NULL UNIQUE,
+  image_url text NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT current_timestamp,
   updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT current_timestamp
 );

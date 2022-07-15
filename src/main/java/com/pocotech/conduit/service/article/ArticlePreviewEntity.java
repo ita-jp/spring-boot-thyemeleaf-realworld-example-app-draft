@@ -1,10 +1,12 @@
 package com.pocotech.conduit.service.article;
 
+import java.net.URL;
 import java.time.LocalDate;
 
 public record ArticlePreviewEntity(
         String slug,
         String title,
+        URL imageURL,
         String author,
         String description,
         LocalDate createdAt

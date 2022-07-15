@@ -19,6 +19,7 @@ public class IndexController {
                 .map(entity -> new ArticlePreviewDTO(
                         entity.slug(),
                         entity.title(),
+                        entity.imageURL(),
                         entity.author(),
                         entity.description(),
                         entity.createdAt()
