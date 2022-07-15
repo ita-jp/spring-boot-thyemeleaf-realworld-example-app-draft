@@ -17,6 +17,7 @@ public class ArticleService {
         return articleRepository.select()
                 .stream()
                 .map(r -> new ArticlePreviewEntity(
+                        r.getSlug(),
                         r.getTitle(),
                         r.getUser().getUsername(),
                         r.getDescription(),

@@ -75,7 +75,7 @@
                             <i class="ion-heart"></i> 0
                         </button>
                     </div>
-                    <a href="" class="preview-link">
+                    <a href="./articles/detail.html" th:href="@{/articles/{slug}(slug=${article.slug})}" class="preview-link">
                         <h1 th:text="${article.title}">__title__</h1>
                         <p th:text="${article.description}">__description__</p>
                         <span>Read more...</span>
