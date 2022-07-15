@@ -14,6 +14,7 @@ public interface ArticleRepository {
     @Select("""
             SELECT
                 a.id
+              , a.slug
               , a.user_id
               , a.title
               , a.description
@@ -29,6 +30,7 @@ public interface ArticleRepository {
             """)
     @Results(value = {
             @Result(id = true, column = "id", property = "id"),
+            @Result(column = "slug", property = "slug"),
             @Result(column = "title", property = "title"),
             @Result(column = "description", property = "description"),
             @Result(column = "body", property = "body"),
