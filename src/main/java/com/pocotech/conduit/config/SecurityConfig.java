@@ -28,6 +28,7 @@ public class SecurityConfig {
         ).authorizeHttpRequests(authz -> authz
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .requestMatchers("/").permitAll()
+                .requestMatchers("/register").permitAll()
                 .anyRequest().authenticated()
         );
         return http.build();

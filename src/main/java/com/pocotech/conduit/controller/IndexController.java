@@ -33,4 +33,9 @@ public class IndexController {
     public String showLoginForm() {
         return "login";
     }
+
+    @GetMapping("/register")
+    public String showRegisterForm() {
+        return "register";
+    }
 }
