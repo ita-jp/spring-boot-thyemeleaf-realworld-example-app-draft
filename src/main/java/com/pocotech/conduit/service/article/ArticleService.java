@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,7 +20,6 @@ public class ArticleService {
         return articleRepository.select()
                 .stream()
                 .map(r -> new ArticlePreviewEntity(
-                        r.getSlug(),
                         r.getTitle(),
                         r.getUser().getImageURL(),
                         r.getUser().getUsername(),
@@ -29,11 +29,10 @@ public class ArticleService {
                 .collect(Collectors.toList());
     }
 
-    public Optional<ArticleEntity> find(String slug) {
-        return articleRepository.selectBySlug(slug)
+    public Optional<ArticleEntity> find(String id) {
+        return articleRepository.selectById(id)
                 .map(record -> new ArticleEntity(
                                 record.getTitle(),
-                                record.getSlug(),
                                 new UserEntity(
                                         record.getUser().getId(),
                                         record.getUser().getUsername(),
@@ -48,5 +47,9 @@ public class ArticleService {
                                 record.getCreatedAt()
                         )
                 );
+    }
+
+    public void create(UUID userId, String title, String description, String body) {
+        articleRepository.insert(UUID.randomUUID(), userId, title, description, body);
     }
 }

@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 
 public record ArticleEntity(
         String id,
-        String slug,
         UserEntity user,
         String title,
         String description,

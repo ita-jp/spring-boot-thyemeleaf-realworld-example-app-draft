@@ -20,7 +20,6 @@ public class IndexController {
         var entityList = articleService.list();
         var dtoList = entityList.stream()
                 .map(entity -> new ArticlePreviewDTO(
-                        entity.slug(),
                         entity.title(),
                         entity.imageURL(),
                         entity.author(),

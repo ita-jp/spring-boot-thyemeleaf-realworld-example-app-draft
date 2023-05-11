@@ -1,13 +1,16 @@
 package com.pocotech.conduit.repository;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.One;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Mapper
 public interface ArticleRepository {
@@ -15,7 +18,6 @@ public interface ArticleRepository {
     @Select("""
             SELECT
                 a.id
-              , a.slug
               , a.user_id
               , a.title
               , a.description
@@ -32,7 +34,6 @@ public interface ArticleRepository {
             """)
     @Results(value = {
             @Result(id = true, column = "id", property = "id"),
-            @Result(column = "slug", property = "slug"),
             @Result(column = "title", property = "title"),
             @Result(column = "description", property = "description"),
             @Result(column = "body", property = "body"),
@@ -56,7 +57,6 @@ public interface ArticleRepository {
     @Select("""
             SELECT
                 a.id
-              , a.slug
               , a.user_id
               , a.title
               , a.description
@@ -70,11 +70,10 @@ public interface ArticleRepository {
               , u.updated_at as user_updated_at
             FROM articles a
             JOIN users u on a.user_id = u.id
-            WHERE slug = #{slug}
+            WHERE id = #{id}
             """)
     @Results(value = {
             @Result(id = true, column = "id", property = "id"),
-            @Result(column = "slug", property = "slug"),
             @Result(column = "title", property = "title"),
             @Result(column = "description", property = "description"),
             @Result(column = "body", property = "body"),
@@ -82,6 +81,29 @@ public interface ArticleRepository {
             @Result(column = "updated_at", property = "updatedAt"),
             @Result(property = "user", one = @One(resultMap = "userResultMap", columnPrefix = "user_"))
     })
-    Optional<ArticleRecord> selectBySlug(String slug);
+    Optional<ArticleRecord> selectById(@Param("id") String id);
+
+    @Insert("""
+            INSERT INTO articles (
+                id
+              , user_id
+              , title
+              , description
+              , body
+            ) VALUES (
+                #{id}
+              , #{userId}
+              , #{title}
+              , #{description}
+              , #{body}
+            )
+            """)
+    void insert(
+            @Param("id") UUID id,
+            @Param("userId") UUID userId,
+            @Param("title") String title,
+            @Param("description") String description,
+            @Param("body") String body
+    );
 
 }

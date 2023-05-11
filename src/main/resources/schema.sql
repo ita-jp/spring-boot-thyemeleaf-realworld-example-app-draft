@@ -10,7 +10,6 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS articles (
   id UUID PRIMARY KEY,
-  slug TEXT NOT NULL,
   user_id UUID NOT NULL references users(id),
   title text NOT NULL,
   description text NOT NULL,

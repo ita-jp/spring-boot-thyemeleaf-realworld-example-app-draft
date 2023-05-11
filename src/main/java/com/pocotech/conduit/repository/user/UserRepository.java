@@ -22,4 +22,7 @@ public interface UserRepository {
 
     @Select("SELECT * FROM users WHERE email = #{email}")
     Optional<UserRecord> selectByEmail(@Param("email") String email);
+
+    @Select("SELECT * FROM users WHERE username = #{username}")
+    Optional<UserRecord> selectByUsername(@Param("username") String username);
 }
