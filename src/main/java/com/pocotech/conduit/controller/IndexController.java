@@ -28,4 +28,9 @@ public class IndexController {
         model.addAttribute("articlePreviewList", dtoList);
         return "index";
     }
+
+    @GetMapping("/login")
+    public String showLoginForm() {
+        return "login";
+    }
 }
