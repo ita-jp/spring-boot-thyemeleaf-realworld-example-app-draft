@@ -10,6 +10,8 @@ import java.util.UUID;
 public class UserRecord {
     private UUID id;
     private String username;
+    private String email;
+    private String password;
     private URL imageURL;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

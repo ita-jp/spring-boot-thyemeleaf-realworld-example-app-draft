@@ -20,12 +20,12 @@
 <!--                        <li>That email is already taken</li>-->
 <!--                    </ul>-->
 
-                    <form>
+                    <form th:action="@{/login}" method="post">
                         <fieldset class="form-group">
-                            <input class="form-control form-control-lg" type="text" placeholder="Email"/>
+                            <input class="form-control form-control-lg" type="text" name="email" placeholder="Email"/>
                         </fieldset>
                         <fieldset class="form-group">
-                            <input class="form-control form-control-lg" type="password" placeholder="Password"/>
+                            <input class="form-control form-control-lg" type="password" name="password" placeholder="Password"/>
                         </fieldset>
                         <button class="btn btn-lg btn-primary pull-xs-right">Sign in</button>
                     </form>
