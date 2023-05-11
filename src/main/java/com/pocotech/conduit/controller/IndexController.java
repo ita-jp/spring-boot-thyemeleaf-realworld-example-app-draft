@@ -45,6 +45,6 @@ public class IndexController {
     @PostMapping("/register")
     public String registerUser(RegistrationForm form) {
         userService.createUser(form.username(), form.email(), form.password());
-        return "redirect:/";
+        return "redirect:/login";
     }
 }
