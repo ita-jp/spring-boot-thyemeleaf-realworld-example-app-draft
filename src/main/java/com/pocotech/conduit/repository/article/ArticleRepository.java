@@ -1,5 +1,6 @@
-package com.pocotech.conduit.repository;
+package com.pocotech.conduit.repository.article;
 
+import com.pocotech.conduit.repository.user.UserRecord;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.One;

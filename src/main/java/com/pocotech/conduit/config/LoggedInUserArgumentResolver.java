@@ -1,6 +1,6 @@
 package com.pocotech.conduit.config;
 
-import com.pocotech.conduit.repository.UserRecord;
+import com.pocotech.conduit.repository.user.UserRecord;
 import com.pocotech.conduit.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;

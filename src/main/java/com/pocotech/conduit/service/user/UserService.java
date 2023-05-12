@@ -1,6 +1,6 @@
 package com.pocotech.conduit.service.user;
 
-import com.pocotech.conduit.repository.UserRecord;
+import com.pocotech.conduit.repository.user.UserRecord;
 import com.pocotech.conduit.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

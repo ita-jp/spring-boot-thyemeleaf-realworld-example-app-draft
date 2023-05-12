@@ -1,5 +1,6 @@
-package com.pocotech.conduit.repository;
+package com.pocotech.conduit.repository.article;
 
+import com.pocotech.conduit.repository.user.UserRecord;
 import lombok.Data;
 
 import java.time.LocalDateTime;

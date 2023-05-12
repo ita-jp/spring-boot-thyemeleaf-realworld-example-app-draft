@@ -1,4 +1,4 @@
-package com.pocotech.conduit.repository;
+package com.pocotech.conduit.repository.user;
 
 import com.pocotech.conduit.service.user.UserEntity;
 import lombok.Data;

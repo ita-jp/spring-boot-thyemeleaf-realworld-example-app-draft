@@ -1,6 +1,6 @@
 package com.pocotech.conduit.service.article;
 
-import com.pocotech.conduit.repository.ArticleRepository;
+import com.pocotech.conduit.repository.article.ArticleRepository;
 import com.pocotech.conduit.service.user.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
