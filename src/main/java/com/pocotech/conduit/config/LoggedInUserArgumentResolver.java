@@ -1,5 +1,6 @@
 package com.pocotech.conduit.config;
 
+import com.pocotech.conduit.repository.UserRecord;
 import com.pocotech.conduit.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
@@ -13,6 +14,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -36,8 +38,10 @@ public class LoggedInUserArgumentResolver implements HandlerMethodArgumentResolv
                 .map(SecurityContext::getAuthentication)
                 .filter(Authentication::isAuthenticated)
                 .map(Authentication::getName)
-                .flatMap(userRepository::selectByUsername)
-                .map(record -> new LoggedInUser(record.getId()))
+                .map(UUID::fromString)
+                .flatMap(userRepository::selectById)
+                .map(UserRecord::getId)
+                .map(LoggedInUser::new)
                 .orElse(null);
     }
 }

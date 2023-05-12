@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-md-10 offset-md-1">
-                        <img src="http://i.imgur.com/Qr71crq.jpg" class="user-img"/>
+                        <img th:src="*{imageURL()}" class="user-img"/>
                         <h4 th:text="*{username()}"></h4>
 <!--                        <p th:text="*{bio}"></p>-->
                         <button class="btn btn-sm btn-outline-secondary action-btn">
