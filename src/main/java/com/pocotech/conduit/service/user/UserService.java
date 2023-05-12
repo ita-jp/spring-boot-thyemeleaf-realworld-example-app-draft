@@ -1,5 +1,6 @@
 package com.pocotech.conduit.service.user;
 
+import com.pocotech.conduit.repository.UserRecord;
 import com.pocotech.conduit.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,12 +25,16 @@ public class UserService {
 
     public Optional<UserEntity> findByUsername(String username) {
         return userRepository.selectByUsername(username)
-                .map(record -> new UserEntity(
-                        record.getId(),
-                        record.getUsername(),
-                        record.getImageURL(),
-                        record.getCreatedAt(),
-                        record.getUpdatedAt()
-                ));
+                .map(UserRecord::toEntity);
+    }
+
+    public Optional<UserEntity> findById(UUID id) {
+        return userRepository.selectById(id)
+                .map(UserRecord::toEntity);
+    }
+
+    @Transactional
+    public void update(UUID userId, String username, String email, String password, String bio, String imageURL) {
+        userRepository.update(userId, username, email, password, bio, imageURL);
     }
 }

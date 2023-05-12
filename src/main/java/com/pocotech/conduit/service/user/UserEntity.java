@@ -7,6 +7,8 @@ import java.util.UUID;
 public record UserEntity(
         UUID id,
         String username,
+        String email,
+        String bio,
         URL imageURL,
         LocalDateTime createdAt,
         LocalDateTime updatedAt

@@ -37,6 +37,8 @@ public class ArticleService {
                                 new UserEntity(
                                         record.getUser().getId(),
                                         record.getUser().getUsername(),
+                                        record.getUser().getEmail(),
+                                        record.getUser().getBio(),
                                         record.getUser().getImageURL(),
                                         record.getUser().getCreatedAt(),
                                         record.getUser().getUpdatedAt()

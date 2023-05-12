@@ -4,6 +4,10 @@ spring:
     url: jdbc:h2:mem:conduit;DB_CLOSE_ON_EXIT=TRUE;MODE=PostgreSQL
     username: sa
     password:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
