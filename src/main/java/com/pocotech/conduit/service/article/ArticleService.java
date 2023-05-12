@@ -24,7 +24,8 @@ public class ArticleService {
                         r.getUser().getImageURL(),
                         r.getUser().getUsername(),
                         r.getDescription(),
-                        r.getCreatedAt().toLocalDate()
+                        r.getCreatedAt().toLocalDate(),
+                        r.getId().toString()
                 ))
                 .collect(Collectors.toList());
     }

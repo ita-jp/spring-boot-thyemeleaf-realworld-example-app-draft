@@ -8,6 +8,7 @@ public record ArticlePreviewEntity(
         URL imageURL,
         String author,
         String description,
-        LocalDate createdAt
+        LocalDate createdAt,
+        String id
 ) {
 }

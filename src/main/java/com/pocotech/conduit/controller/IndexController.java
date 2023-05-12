@@ -1,5 +1,6 @@
 package com.pocotech.conduit.controller;
 
+import com.pocotech.conduit.controller.article.ArticlePreviewDTO;
 import com.pocotech.conduit.service.article.ArticleService;
 import com.pocotech.conduit.service.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -19,13 +20,7 @@ public class IndexController {
     public String index(Model model) {
         var entityList = articleService.list();
         var dtoList = entityList.stream()
-                .map(entity -> new ArticlePreviewDTO(
-                        entity.title(),
-                        entity.imageURL(),
-                        entity.author(),
-                        entity.description(),
-                        entity.createdAt()
-                ))
+                .map(ArticlePreviewDTO::from)
                 .toList();
         model.addAttribute("articlePreviewList", dtoList);
         return "index";

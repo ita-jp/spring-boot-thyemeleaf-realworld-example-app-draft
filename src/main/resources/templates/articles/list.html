@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<body>
+<div class="article-preview" th:fragment="articleList" th:each="article : ${articleList}" th:object="${article}">
+    <div class="article-meta">
+        <a href=""><img src="http://i.imgur.com/Qr71crq.jpg"/></a>
+        <div class="info">
+            <a href="" class="author" th:text="*{author}"></a>
+            <span class="date" th:text="*{createdAt}"></span>
+        </div>
+        <button class="btn btn-outline-primary btn-sm pull-xs-right">
+            <i class="ion-heart"></i> 29
+        </button>
+    </div>
+    <a th:href="@{/articles/{id}(id=*{id})}" class="preview-link">
+        <h1 th:text="*{title}"></h1>
+        <p th:text="*{description}"></p>
+        <span>Read more...</span>
+    </a>
+</div>
+</body>
+</html>

@@ -31,4 +31,14 @@ public class ArticleController {
         articleService.create(user.id(), form.title(), form.description(), form.body());
         return "redirect:/";
     }
+
+    @GetMapping(headers = "HX-Request")
+    public String showList(Model model) {
+        var articleList = articleService.list()
+                .stream()
+                .map(ArticlePreviewDTO::from)
+                .toList();
+        model.addAttribute("articleList", articleList);
+        return "articles/list :: articleList";
+    }
 }
