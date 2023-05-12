@@ -16,21 +16,28 @@ import java.util.UUID;
 public interface ArticleRepository {
 
     @Select("""
-            SELECT
-                a.id
-              , a.user_id
-              , a.title
-              , a.description
-              , a.body
-              , a.created_at
-              , a.updated_at
-              , u.id as user_id
-              , u.username as user_username
-              , u.image_url as user_image_url
-              , u.created_at as user_created_at
-              , u.updated_at as user_updated_at
-            FROM articles a
-            JOIN users u on a.user_id = u.id
+            <script>
+              SELECT
+                  a.id
+                , a.user_id
+                , a.title
+                , a.description
+                , a.body
+                , a.created_at
+                , a.updated_at
+                , u.id as user_id
+                , u.username as user_username
+                , u.image_url as user_image_url
+                , u.created_at as user_created_at
+                , u.updated_at as user_updated_at
+              FROM articles a
+              JOIN users u on a.user_id = u.id
+              <where>
+                <if test="username != null">
+                  u.username = #{username}
+                </if>
+              </where>
+            </script>
             """)
     @Results(value = {
             @Result(id = true, column = "id", property = "id"),
@@ -41,7 +48,7 @@ public interface ArticleRepository {
             @Result(column = "updated_at", property = "updatedAt"),
             @Result(property = "user", one = @One(resultMap = "userResultMap", columnPrefix = "user_"))
     })
-    List<ArticleRecord> select();
+    List<ArticleRecord> select(@Param("username") String username);
 
     @Select("SELECT 1")
     @Results(id = "userResultMap", value = {

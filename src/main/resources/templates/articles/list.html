@@ -5,7 +5,7 @@
 <body>
 <div class="article-preview" th:fragment="articleList" th:each="article : ${articleList}" th:object="${article}">
     <div class="article-meta">
-        <a href=""><img src="http://i.imgur.com/Qr71crq.jpg"/></a>
+        <a th:href="@{/profiles/{id}(id=*{author})}"><img src="http://i.imgur.com/Qr71crq.jpg"/></a>
         <div class="info">
             <a href="" class="author" th:text="*{author}"></a>
             <span class="date" th:text="*{createdAt}"></span>

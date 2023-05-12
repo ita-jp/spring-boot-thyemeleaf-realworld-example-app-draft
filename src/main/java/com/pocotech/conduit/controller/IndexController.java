@@ -18,7 +18,7 @@ public class IndexController {
 
     @GetMapping
     public String index(Model model) {
-        var entityList = articleService.list();
+        var entityList = articleService.list(null);
         var dtoList = entityList.stream()
                 .map(ArticlePreviewDTO::from)
                 .toList();

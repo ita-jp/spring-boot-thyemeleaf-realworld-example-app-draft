@@ -16,8 +16,8 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
 
-    public List<ArticlePreviewEntity> list() {
-        return articleRepository.select()
+    public List<ArticlePreviewEntity> list(String author) {
+        return articleRepository.select(author)
                 .stream()
                 .map(r -> new ArticlePreviewEntity(
                         r.getTitle(),

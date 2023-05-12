@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -19,5 +20,16 @@ public class UserService {
     public void createUser(String username, String email, String rawPassword) {
         var encodedPassword = passwordEncoder.encode(rawPassword);
         userRepository.insert(UUID.randomUUID(), username, email, encodedPassword);
+    }
+
+    public Optional<UserEntity> findByUsername(String username) {
+        return userRepository.selectByUsername(username)
+                .map(record -> new UserEntity(
+                        record.getId(),
+                        record.getUsername(),
+                        record.getImageURL(),
+                        record.getCreatedAt(),
+                        record.getUpdatedAt()
+                ));
     }
 }
