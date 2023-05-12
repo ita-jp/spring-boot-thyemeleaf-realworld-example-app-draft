@@ -28,7 +28,7 @@ public class ArticleController {
 
     @PostMapping
     public String createArticle(ArticleForm form, LoggedInUser user) {
-        articleService.create(user.id(), form.body(), form.description(), form.body());
+        articleService.create(user.id(), form.title(), form.description(), form.body());
         return "redirect:/";
     }
 }

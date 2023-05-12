@@ -70,7 +70,7 @@ public interface ArticleRepository {
               , u.updated_at as user_updated_at
             FROM articles a
             JOIN users u on a.user_id = u.id
-            WHERE id = #{id}
+            WHERE a.id = #{id}
             """)
     @Results(value = {
             @Result(id = true, column = "id", property = "id"),
