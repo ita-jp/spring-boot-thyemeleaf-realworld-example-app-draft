@@ -26,20 +26,31 @@
         <a class="navbar-brand" th:href="@{/}">conduit</a>
         <ul class="nav navbar-nav pull-xs-right">
             <li class="nav-item">
-                <!-- Add "active" class when you're on that page" -->
-                <a class="nav-link active" th:href="@{/}">Home</a>
+                <a class="nav-link" th:href="@{/}" th:classappend="${requestURI} == '/' ? 'active' : ''">
+                    Home
+                </a>
             </li>
             <li class="nav-item" sec:authorize="isAuthenticated()">
-                <a class="nav-link" th:href="@{/editor}"> <i class="ion-compose"></i>&nbsp;New Article </a>
+                <a class="nav-link" th:href="@{/editor}" th:classappend="${requestURI} == '/editor' ? 'active' : ''">
+                    <i class="ion-compose"></i>&nbsp;New Article
+                </a>
             </li>
             <li class="nav-item" sec:authorize="isAuthenticated()">
-                <a class="nav-link" th:href="@{/settings}"> <i class="ion-gear-a"></i>&nbsp;Settings </a>
+                <a class="nav-link" th:href="@{/settings}"
+                   th:classappend="${requestURI} == '/settings' ? 'active' : ''">
+                    <i class="ion-gear-a"></i>&nbsp;Settings
+                </a>
             </li>
             <li class="nav-item" sec:authorize="!isAuthenticated()">
-                <a class="nav-link" th:href="@{/login}">Sign in</a>
+                <a class="nav-link" th:href="@{/login}" th:classappend="${requestURI} == '/login' ? 'active' : ''">
+                    Sign in
+                </a>
             </li>
             <li class="nav-item" sec:authorize="!isAuthenticated()">
-                <a class="nav-link" th:href="@{/register}">Sign up</a>
+                <a class="nav-link" th:href="@{/register}"
+                   th:classappend="${requestURI} == '/register' ? 'active' : ''">
+                    Sign up
+                </a>
             </li>
         </ul>
     </div>

@@ -16,7 +16,7 @@ public class IndexController {
     private final ArticleService articleService;
     private final UserService userService;
 
-    @GetMapping
+    @GetMapping("/")
     public String index(Model model) {
         var entityList = articleService.list(null);
         var dtoList = entityList.stream()
