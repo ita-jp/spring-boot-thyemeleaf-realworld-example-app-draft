@@ -30,7 +30,11 @@
                         </ul>
                     </div>
 
-                    <div hx-get="/articles" hx-trigger="load" hx-swap="outerHTML"></div>
+                    <div hx-get="/articles" hx-trigger="load" hx-swap="outerHTML">
+                        <div class="article-preview">
+                            <p>Loading articles...</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-3">
