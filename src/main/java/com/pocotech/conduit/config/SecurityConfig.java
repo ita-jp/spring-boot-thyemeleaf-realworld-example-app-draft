@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/register").permitAll()
-                .requestMatchers("/articles").permitAll()
+                .requestMatchers(antMatcher("/articles/**")).permitAll()
                 .anyRequest().authenticated()
         );
         return http.build();
