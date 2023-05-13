@@ -13,11 +13,11 @@
                 <h1 th:text="${article.title()}"></h1>
 
                 <div class="article-meta" th:fragment="article-meta">
-                    <a th:href="@{/profiles/{id}(id=*{article.user().id()})}">
+                    <a th:href="@{/profiles/{id}(id=*{article.user().username()})}">
                         <img th:src="${article.user().imageURL()}"/>
                     </a>
                     <div class="info">
-                        <a th:href="@{/profiles/{id}(id=*{article.user().id()})}" class="author" th:text="*{article.user().username()}"></a>
+                        <a th:href="@{/profiles/{id}(id=*{article.user().username()})}" class="author" th:text="*{article.user().username()}"></a>
                         <span class="date" th:text="*{article.createdAt()}"></span>
                     </div>
                     <button class="btn btn-sm btn-outline-secondary">

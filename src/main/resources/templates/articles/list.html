@@ -7,7 +7,7 @@
     <div class="article-meta">
         <a th:href="@{/profiles/{id}(id=*{author})}"><img th:src="*{imageURL}"/></a>
         <div class="info">
-            <a href="" class="author" th:text="*{author}"></a>
+            <a th:href="@{/profiles/{id}(id=*{author})}" class="author" th:text="*{author}"></a>
             <span class="date" th:text="*{createdAt}"></span>
         </div>
         <button class="btn btn-outline-primary btn-sm pull-xs-right">
