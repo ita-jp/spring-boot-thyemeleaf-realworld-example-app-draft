@@ -38,6 +38,7 @@ public interface ArticleRepository {
                   u.username = #{username}
                 </if>
               </where>
+              ORDER BY a.created_at DESC
             </script>
             """)
     @Results(value = {
