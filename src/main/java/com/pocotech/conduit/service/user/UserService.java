@@ -34,7 +34,10 @@ public class UserService {
     }
 
     @Transactional
-    public void update(UUID userId, String username, String email, String password, String bio, String imageURL) {
-        userRepository.update(userId, username, email, password, bio, imageURL);
+    public void update(UUID userId, String username, String email, String rawPassword, String bio, String imageURL) {
+        var encodedPassword = Optional.ofNullable(rawPassword)
+                .map(passwordEncoder::encode)
+                .orElse(null);
+        userRepository.update(userId, username, email, encodedPassword, bio, imageURL);
     }
 }
